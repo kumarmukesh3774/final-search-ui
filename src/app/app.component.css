@@ -1,0 +1,22 @@
+button.c {
+    background:transparent;
+     border:none;
+}
+ul{
+    list-style: none;
+
+}
+
+#suggestion {
+    border: tan;
+    color:black;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+#suggestion:hover{
+
+    background-color: rgb(235, 229, 229);
+    
+}

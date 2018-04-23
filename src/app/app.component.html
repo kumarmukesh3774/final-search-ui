@@ -1,12 +1,27 @@
-<input
-    (keyup)="searchTerm$.next($event.target.value)">
+
+<form>
+    <input
+    (keyup)="searchTerm$.next($event.target.value)" autocomplete="off" [(ngModel)]="searchInput"  id="input" name="input" >
+    <button type="button" (click)="onclickByForm()">Search</button>
+ </form>
 <div *ngIf='flag;else elseBlock'>
 <ul >
-  <li *ngFor="let result of results.result | slice:0:9">
-      {{result.element}}
+
+    
+  <li *ngFor="let result of results| slice:0:9">
+
+      <span id="suggestion" (click)="onclick(result)" >{{result}}</span>
+
   </li>
+
 </ul>
 </div>
 <ng-template #elseBlock></ng-template>
 
 
+<div *ngFor="let product of products" >
+<div>{{product.offerTitle}} </div>
+<div>{{product.category}} </div>
+<div>{{product.keywords}} </div>
+<div>{{product.score}} </div>
+</div>

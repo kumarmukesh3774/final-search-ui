@@ -11,8 +11,11 @@ import { HttpModule } from '@angular/http';
 @Injectable()
 export class SearchService {
   baseUrl: string = 'http://localhost:8800/q/';
+  baseUrlProduct: string = 'http://localhost:8800/search-key/';
+
 
   public keywords:any=[];
+  public products:any=[];
   public defaultKeywords:any=[""];
 
   constructor(private http: Http) { }
@@ -38,6 +41,19 @@ export class SearchService {
 
         private handleError(error: Response){
           return Observable.throw(error.statusText);
+        }
+
+
+        searchProducts(result){
+          //alert(result);
+          this.products=this.http
+          .get(this.baseUrlProduct + result)
+          .map(res => res.json(),
+          (error: any)=>this.handleError(error));
+         // alert(this.products[0].offerTitle);
+         //console.log(this.products._body);
+          return this.products; 
+  
         }
         
   
